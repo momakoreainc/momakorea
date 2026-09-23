@@ -23,7 +23,7 @@ function App() {
   }, [])
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/new">
       <Layout>
         <ScrollReset />
         <Routes>
