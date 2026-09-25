@@ -43,7 +43,7 @@ export function Hero() {
         alt=""
         className="absolute inset-0 -z-20 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 -z-10 bg-black/50" />
+      <div className="absolute inset-0 -z-10 bg-black/70" />
 
       <p className="mb-4 text-sm tracking-widest text-(--color-muted)" data-reveal>
         Interior Design Studio — Jeonju, Korea
