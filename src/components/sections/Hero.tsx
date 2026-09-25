@@ -7,12 +7,19 @@ gsap.registerPlugin(SplitText)
 
 export function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null)
+  const bgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
     const headline = headlineRef.current
     if (!headline || prefersReducedMotion()) return
 
     let split: SplitText | undefined
+
+    gsap.from(bgRef.current, {
+      scale: 1.12,
+      duration: 1.8,
+      ease: 'power2.out',
+    })
 
     document.fonts.ready.then(() => {
       split = SplitText.create(headline, { type: 'lines', mask: 'lines' })
@@ -29,7 +36,15 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="flex min-h-screen flex-col justify-center px-6 md:px-12">
+    <section className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 md:px-12">
+      <img
+        ref={bgRef}
+        src={`${import.meta.env.BASE_URL}projects/jeonju-exhibition-convention-center/cover.jpg`}
+        alt=""
+        className="absolute inset-0 -z-20 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 -z-10 bg-black/50" />
+
       <p className="mb-4 text-sm tracking-widest text-(--color-muted)" data-reveal>
         Interior Design Studio — Jeonju, Korea
       </p>
