@@ -1,11 +1,22 @@
+import { useEffect, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import gsap from 'gsap'
 import { projects } from '../data/projects'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { prefersReducedMotion } from '../lib/motionPreference'
+
+const HERO_IMAGE = `${import.meta.env.BASE_URL}projects/jeonju-exhibition-convention-center/cover.jpg`
 
 export function LabotoryHome() {
   const [searchParams] = useSearchParams()
   const activeCategory = searchParams.get('category')
   const listRef = useScrollReveal<HTMLDivElement>({ stagger: 0.08, start: 'top 90%' })
+  const heroImgRef = useRef<HTMLImageElement>(null)
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return
+    gsap.from(heroImgRef.current, { scale: 1.1, duration: 1.8, ease: 'power2.out' })
+  }, [])
 
   const visibleProjects = activeCategory
     ? projects.filter((p) => p.category === activeCategory)
@@ -13,6 +24,22 @@ export function LabotoryHome() {
 
   return (
     <div>
+      <section className="relative flex min-h-screen flex-col justify-end overflow-hidden px-6 pb-16 md:px-16 md:pb-20">
+        <img
+          ref={heroImgRef}
+          src={HERO_IMAGE}
+          alt=""
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 -z-10 bg-black/55" />
+        <p className="text-sm tracking-widest text-white/70">Interior Design Studio — Jeonju, Korea</p>
+        <h1 className="mt-4 max-w-3xl text-4xl leading-[1.05] font-medium tracking-tight text-white md:text-7xl">
+          Imagining is key
+          <br />
+          to more creative.
+        </h1>
+      </section>
+
       <section id="about" className="px-6 py-16 md:px-16 md:py-24">
         <p className="max-w-lg text-2xl leading-snug font-medium md:text-3xl">
           We create interior identity
