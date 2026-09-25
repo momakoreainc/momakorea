@@ -1,4 +1,14 @@
-export type ProjectCategory = 'Residential' | 'Office' | 'Commercial' | 'Exhibition' | 'Hotel'
+export type ProjectCategory =
+  | 'Cultural & Public Spaces'
+  | 'Sports & Community'
+  | 'Education & Library'
+  | 'Government'
+  | 'Museum & Exhibition'
+  | 'Medical Center & Pharmacy'
+  | 'Hotel & Villa'
+  | 'Apartment & Residence'
+  | 'Office'
+  | 'Commercial'
 
 export type ProjectSection = {
   heading: string

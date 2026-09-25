@@ -1,57 +1,317 @@
-import type { Project, ProjectCategory } from '../types'
+import type { Project } from '../types'
 
-export const categoryDescriptions: Record<ProjectCategory, string> = {
-  Residential:
-    'A private residence reimagined around light, material honesty, and the rhythms of daily life.',
-  Office: 'A workspace built for open communication and everyday clarity.',
-  Commercial: 'A commercial space designed to turn everyday visits into considered experiences.',
-  Exhibition:
-    'An exhibition environment shaped around spatial storytelling and material research.',
-  Hotel: 'A hospitality space where planning, lighting, and materials come together for guests.',
+function asset(path: string) {
+  return `${import.meta.env.BASE_URL}${path}`
 }
 
-function dummyImage(seed: string, width: number, height: number) {
-  return `https://picsum.photos/seed/${seed}/${width}/${height}`
-}
-
-type ProjectSeed = {
-  id: string
-  title: string
-  category: ProjectCategory
-  location: string
-  year: string
-}
-
-const projectSeeds: ProjectSeed[] = [
-  { id: 'jeju-town-house', title: 'Jeju Town House', category: 'Residential', location: 'Jeju', year: '2017' },
-  { id: 'doosung-korea-office', title: 'Doosung Korea Office', category: 'Office', location: 'Jeonju', year: '2017' },
-  { id: 'gunsan-hardy-cafe', title: 'Gunsan Hardy Cafe', category: 'Commercial', location: 'Gunsan', year: '2017' },
-  { id: 'lx-exhibition', title: 'LX Exhibition', category: 'Exhibition', location: 'Jeju', year: '2017' },
-  { id: 'theme-museum-of-korean-liquor', title: 'Theme Museum of Korean Liquor', category: 'Exhibition', location: 'Wanju', year: '2017' },
-  { id: 'huawei', title: 'Huawei', category: 'Exhibition', location: 'Jeonju', year: '2017' },
-  { id: 'wanju-exhibition-hall', title: 'Wanju Exhibition Hall', category: 'Exhibition', location: 'Wanju', year: '2017' },
-  { id: 'jeonju-kyungwon-hotel', title: 'Jeonju Kyungwon Hotel', category: 'Hotel', location: 'Jeonju', year: '2017' },
+export const projects: Project[] = [
+  {
+    id: 'jeonju-exhibition-convention-center',
+    title: 'Jeonju Exhibition & Convention Center',
+    category: 'Cultural & Public Spaces',
+    location: 'Jeonju',
+    year: '2025',
+    cover: asset('projects/jeonju-exhibition-convention-center/cover.jpg'),
+    summary:
+      'A large-scale convention and exhibition venue built around open circulation, warm timber, and flexible event spaces.',
+    sections: [
+      {
+        heading: 'Entrance Hall',
+        body: 'Tall timber columns and louvered walls bring warmth and gravitas to a soaring entrance hall built for smooth crowd flow. A black-lined ceiling and evenly spaced fixtures keep the space calm and orderly, ready to shift from everyday lounge to press-conference and registration hub.',
+        image: asset('projects/jeonju-exhibition-convention-center/1.jpg'),
+      },
+      {
+        heading: 'VIP Lounge',
+        body: 'Deep wood tones and muted colors give the VIP lounge a grounded, refined atmosphere. Diffused ceiling light spreads softly through the room, while brown leather and fabric furniture balance formality with comfort — a private retreat for important meetings.',
+        image: asset('projects/jeonju-exhibition-convention-center/2.jpg'),
+      },
+      {
+        heading: 'Grand Ballroom',
+        body: 'Walnut-toned acoustic panels and a darkened ceiling lend the grand hall a stately presence. Angled walls and horizontal cove lighting add depth and rhythm, while a chandelier casts a soft veil of light — a space equally suited to international conferences and galas.',
+        image: asset('projects/jeonju-exhibition-convention-center/3.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'jeonju-indie-film-house',
+    title: 'Jeonju Independent Film House',
+    category: 'Cultural & Public Spaces',
+    location: 'Jeonju',
+    year: '2024',
+    cover: asset('projects/jeonju-indie-film-house/cover.jpg'),
+    summary: "An open cultural space where film, books, and people's stories intersect.",
+    sections: [
+      {
+        heading: 'Lobby',
+        body: 'A wall of open shelving invites visitors to browse film and culture titles freely. Bronze steel and perforated bronze panels reinterpret the flicker of a film frame in modern detail, linking exhibition, reading, and lounge areas into one continuous cultural experience.',
+        image: asset('projects/jeonju-indie-film-house/1.jpg'),
+      },
+      {
+        heading: 'Cinema Lounge',
+        body: 'Black tones and soft lighting set an immersive mood for moviegoing. Small wall fixtures echo light scattering from a film frame, while repeating linear frames mark the theater entrance. Ticketing and snacks are combined for convenience, with window seating for lingering before and after a screening.',
+        image: asset('projects/jeonju-indie-film-house/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'jeonju-ecocity-community-center',
+    title: 'Jeonju Ecocity Community Center',
+    category: 'Sports & Community',
+    location: 'Jeonju',
+    year: '2025',
+    cover: asset('projects/jeonju-ecocity-community-center/cover.jpg'),
+    summary:
+      'A sports and community complex where dynamic ceiling lines and angled walls give athletic spaces a refined energy.',
+    sections: [
+      {
+        heading: 'Lounge & Reception',
+        body: 'Long ceiling lines and angled walls express the dynamism of the sports facility with a refined touch. A black reception counter anchors the space, working with lounge furniture to create a comfortable place to gather.',
+        image: asset('projects/jeonju-ecocity-community-center/1.jpg'),
+      },
+      {
+        heading: 'Interior',
+        body: 'Open sightlines and a restrained material palette carry the same clarity through the building, keeping circulation legible for the large crowds a community sports center draws.',
+        image: asset('projects/jeonju-ecocity-community-center/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'wanju-sambong-library',
+    title: 'Wanju Sambong Library',
+    category: 'Education & Library',
+    location: 'Wanju',
+    year: '2023',
+    cover: asset('projects/wanju-sambong-library/cover.jpg'),
+    summary:
+      'A three-story public library that lets reading, study, and rest flow naturally from lobby to reading room.',
+    sections: [
+      {
+        heading: '1st Floor — Reading Hall',
+        body: "Abundant natural light and views of the surrounding landscape carry through from the lobby to the reading and lounge areas. Warm wood and a restrained palette shape a variety of study seating and relaxed lounging spots, completing an open library where reading, study, and rest flow together.",
+        image: asset('projects/wanju-sambong-library/1.jpg'),
+      },
+      {
+        heading: "2nd Floor — Children's Library",
+        body: "Rainbow-hued shelving brings energy to a bright, open space built for children to discover books on their own. Low shelves and child-sized furniture keep everything within easy reach, while a house-shaped reading nook invites kids to step inside a story.",
+        image: asset('projects/wanju-sambong-library/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'namwon-public-library',
+    title: 'Namwon Public Library',
+    category: 'Education & Library',
+    location: 'Namwon',
+    year: '2020',
+    cover: asset('projects/namwon-public-library/cover.jpg'),
+    summary: "A library whose repeating gabled shelving forms a warm, symbolic skyline of its own.",
+    sections: [
+      {
+        heading: 'Reading Hall',
+        body: 'Rows of shelving shaped like rooftops repeat to form a friendly, symbolic landscape unique to the library. Wood shelving set between white frames adds warmth to a light, airy structure, while shelving and reading seats merge into a single architectural gesture for browsing and staying awhile.',
+        image: asset('projects/namwon-public-library/1.jpg'),
+      },
+      {
+        heading: 'Lobby',
+        body: 'High ceilings and exposed concrete overhead keep an open, gallery-like atmosphere, with windows framing the city and a range of reading spots turning an everyday library into a cultural destination.',
+        image: asset('projects/namwon-public-library/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'hwaseong-city-council',
+    title: 'Hwaseong City Council Hall',
+    category: 'Government',
+    location: 'Hwaseong',
+    year: '2026',
+    cover: asset('projects/hwaseong-city-council/cover.jpg'),
+    summary:
+      'A civic hall balancing approachable public lobbies with the quiet formality of council offices.',
+    sections: [
+      {
+        heading: 'Lobby',
+        body: 'Curved wood benches invite visitors to linger and connect in a welcoming public lobby, with timber carried throughout for warmth and stability. The elevator hall, finished in marble and bronze steel, adds a further note of quality.',
+        image: asset('projects/hwaseong-city-council/1.jpg'),
+      },
+      {
+        heading: 'Council Offices',
+        body: 'A calm, considered atmosphere built for the dignity of civic work, using deep wood, neutral fabric, stone, and leather with restraint. Black and brown tones balance with light beige and grey for a settled, cohesive image, with consistent design language scaling across offices of different rank and function.',
+        image: asset('projects/hwaseong-city-council/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'cheonan-buldang-complex',
+    title: 'Cheonan Buldang-dong Complex',
+    category: 'Government',
+    location: 'Cheonan',
+    year: '2026',
+    cover: asset('projects/cheonan-buldang-complex/cover.jpg'),
+    summary:
+      'A civic complex blending a welcoming public service center with community reading and meeting spaces.',
+    sections: [
+      {
+        heading: "Children's Reading Room",
+        body: 'Circular shelving, low sofas, and seating in varied sizes let children read and linger freely. Soft curves and repeating circular ceiling elements add a friendly rhythm, rounding out a joyful reading experience.',
+        image: asset('projects/cheonan-buldang-complex/1.jpg'),
+      },
+      {
+        heading: 'Council Chamber',
+        body: 'A bright, refined council chamber built around white and light wood. A large U-shaped table anchors the room, keeping sightlines and dialogue open between participants — a dignified, professional meeting space fitting a civic building.',
+        image: asset('projects/cheonan-buldang-complex/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'jeonju-museum-of-art',
+    title: 'Jeonju Museum of Art',
+    category: 'Museum & Exhibition',
+    location: 'Jeonju',
+    year: '2024',
+    cover: asset('projects/jeonju-museum-of-art/cover.jpg'),
+    summary: 'A contemporary museum built from board-formed concrete, metal, and glass.',
+    sections: [
+      {
+        heading: 'Lobby & Entrance',
+        body: 'Board-formed exposed concrete, metal, and glass shape a restrained, contemporary entrance and lobby. The solid texture of concrete meets fine wood grain for a space that feels calm yet warm, while translucent glass and natural light draw visitors gently toward the galleries.',
+        image: asset('projects/jeonju-museum-of-art/1.jpg'),
+      },
+      {
+        heading: 'Galleries',
+        body: 'Conservation, exhibition, and experience are woven into a single visitor flow. A glass-fronted storage vault keeps works safe while letting visitors view the collection up close, and restrained color paired with high-quality gallery lighting lets the texture and form of each piece read clearly.',
+        image: asset('projects/jeonju-museum-of-art/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'jeonju-culture-content-center',
+    title: 'Jeonju Korean Culture Experience Center',
+    category: 'Museum & Exhibition',
+    location: 'Jeonju',
+    year: '2024',
+    cover: asset('projects/jeonju-culture-content-center/cover.jpg'),
+    summary:
+      'A digital media and exhibition space reimagining the roots of Korean culture for a contemporary audience.',
+    sections: [
+      {
+        heading: 'Interactive Lobby',
+        body: 'A curved interactive media wall greets visitors in the basement lobby, drawing them naturally toward the galleries. A regular grid of louvers and lighting keeps brightness even and the ceiling composition orderly, while an open gallery layout flexibly hosts a range of media and sculptural works.',
+        image: asset('projects/jeonju-culture-content-center/1.jpg'),
+      },
+      {
+        heading: 'Reception Hall',
+        body: 'Bright tones and a long, open circulation welcome visitors into the hall. Repeating sculptural fixtures — hanji paper set between acrylic panels — layer light with a sense of depth, casting a soft glow that reinterprets Korean tradition in a contemporary register.',
+        image: asset('projects/jeonju-culture-content-center/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'namwon-medical-center',
+    title: 'Namwon Medical Center',
+    category: 'Medical Center & Pharmacy',
+    location: 'Namwon',
+    year: '2025',
+    cover: asset('projects/namwon-medical-center/cover.jpg'),
+    summary:
+      "A hospital ward where a curved nurses' station and calm, healing-focused interiors support both patients and staff.",
+    sections: [
+      {
+        heading: "Nurses' Station & Ward",
+        body: "A softly curved nurses' station with indirect lighting balances staff efficiency with patients' peace of mind. The lounge pairs large windows and natural light with blue benches and bright wood furniture for easy rest and conversation, while patient rooms in white and neutral grey create a stable environment for healing.",
+        image: asset('projects/namwon-medical-center/1.jpg'),
+      },
+      {
+        heading: 'Wayfinding',
+        body: 'Symmetrical planning, linear lighting, and a clear floor-by-floor signage system make the ward easy to navigate, completing a consistent, calming image across the hospital.',
+        image: asset('projects/namwon-medical-center/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'jeonju-kkotsim-hotel',
+    title: 'Jeonju Kkotsim Hotel',
+    category: 'Hotel & Villa',
+    location: 'Jeonju',
+    year: '2022',
+    cover: asset('projects/jeonju-kkotsim-hotel/cover.jpg'),
+    summary:
+      "A hotel that reinterprets Jeonju's spirit of 'kkotsim' — communal warmth, artistry, integrity, and innovation — in a contemporary language.",
+    sections: [
+      {
+        heading: 'Lobby',
+        body: "An open layout and a long reception counter capture Jeonju's spirit of communal warmth. Metal petal sculptures overhead and soft light express an appreciation for art and grace, while restrained stone and composed lines give the lobby a steady, dignified order.",
+        image: asset('projects/jeonju-kkotsim-hotel/1.jpg'),
+      },
+      {
+        heading: 'Junior Suite',
+        body: 'Warm walnut wood and grey fabric panelling create a stable, cozy retreat, with black metal accents adding depth and a modern edge. Layered textiles — a fabric headboard, rug, and curtains — bring visual and tactile comfort under natural and soft indirect light.',
+        image: asset('projects/jeonju-kkotsim-hotel/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'jeju-townhouse',
+    title: 'Jeju Townhouse',
+    category: 'Apartment & Residence',
+    location: 'Jeju',
+    year: '2017',
+    cover: asset('projects/jeju-townhouse/cover.jpg'),
+    summary:
+      "A townhouse that draws Jeju's landscape indoors through wide windows, herringbone wood floors, and a restrained black-and-white palette.",
+    sections: [
+      {
+        heading: 'Living & Kitchen',
+        body: "Wide windows pull Jeju's scenery into the interior, while a restrained black-and-white palette and herringbone wood flooring add warmth and depth. Living room, kitchen, and study connect fluidly, balancing openness with each space's own sense of privacy.",
+        image: asset('projects/jeju-townhouse/1.jpg'),
+      },
+      {
+        heading: 'Bedroom',
+        body: "A sloped ceiling and skylight bring Jeju's sky indoors, deepening the mood of the bedroom. Low shelving, a rattan chair, and the contrast between white walls and dark wood complete a quiet space where reading and rest coexist.",
+        image: asset('projects/jeju-townhouse/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'momakorea-hq',
+    title: 'MoMaKorea Headquarters',
+    category: 'Office',
+    location: 'Jeonju',
+    year: '2024',
+    cover: asset('projects/momakorea-hq/cover.jpg'),
+    summary:
+      "MoMaKorea's own studio — raw concrete and black frames shaping a restrained, industrial-edged workspace.",
+    sections: [
+      {
+        heading: 'Studio',
+        body: 'Raw concrete texture and black framing set an industrial, restrained tone throughout the studio. Open work areas connect organically with enclosed meeting rooms, balancing collaboration with focus, while abundant greenery and natural light keep the environment lively.',
+        image: asset('projects/momakorea-hq/1.jpg'),
+      },
+      {
+        heading: 'Library Wall',
+        body: 'Open shelving and practical storage double as spatial dividers, keeping the plan open while defining each function — a place where creative work and easy rest coexist.',
+        image: asset('projects/momakorea-hq/2.jpg'),
+      },
+    ],
+  },
+  {
+    id: 'naju-udelight-cafe',
+    title: 'Naju Udelight Cafe',
+    category: 'Commercial',
+    location: 'Naju',
+    year: '2020',
+    cover: asset('projects/naju-udelight-cafe/cover.jpg'),
+    summary: 'A cafe where exposed concrete and wood louvers balance raw texture with warmth.',
+    sections: [
+      {
+        heading: 'Main Hall',
+        body: 'Exposed concrete and wood louvers bring together raw texture and warmth. Point lighting and a multi-level layout add depth and openness, while terrazzo and black furniture complete a refined, understated contrast.',
+        image: asset('projects/naju-udelight-cafe/1.jpg'),
+      },
+      {
+        heading: 'Lounge & Terrace',
+        body: 'Repeating ceiling louvers and abundant planting add depth and life, with lounge, bar, and stepped seating linked together so guests can settle in however they like.',
+        image: asset('projects/naju-udelight-cafe/2.jpg'),
+      },
+    ],
+  },
 ]
-
-export const projects: Project[] = projectSeeds.map((seed) => ({
-  ...seed,
-  cover: dummyImage(seed.id, 1600, 1000),
-  summary: categoryDescriptions[seed.category],
-  sections: [
-    {
-      heading: 'Overview',
-      body: `Placeholder overview for ${seed.title} — replace with the real project story: the brief, the site, and what made it worth designing for.`,
-      image: dummyImage(`${seed.id}-1`, 1000, 750),
-    },
-    {
-      heading: 'Approach',
-      body: 'Placeholder approach notes — describe the spatial planning, material choices, and lighting decisions that shaped the space.',
-      image: dummyImage(`${seed.id}-2`, 1000, 750),
-    },
-    {
-      heading: 'Result',
-      body: 'Placeholder result summary — capture the finished space and how it reads once it was in use.',
-      image: dummyImage(`${seed.id}-3`, 1000, 750),
-    },
-  ],
-}))
