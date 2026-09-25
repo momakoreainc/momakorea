@@ -64,13 +64,16 @@ export function LabotoryHome() {
               className="group mb-20 block last:mb-0"
               data-reveal
             >
-              <div className="overflow-hidden">
+              <div className="relative overflow-hidden">
                 <img
                   src={project.cover}
                   alt={project.title}
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  className="aspect-[16/10] w-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:opacity-50 group-hover:blur-[2px]"
                   loading="lazy"
                 />
+                <div className="texture-paper absolute inset-y-0 left-0 flex w-56 -translate-x-full items-start p-6 transition-transform duration-700 ease-out group-hover:translate-x-0 md:w-64">
+                  <span className="text-sm text-neutral-600">{project.title}</span>
+                </div>
               </div>
               <div className="mt-5 flex items-baseline justify-between">
                 <h2 className="text-xl font-medium md:text-2xl">{project.title}</h2>
