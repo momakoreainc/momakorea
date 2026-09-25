@@ -1,13 +1,24 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { prefersReducedMotion } from '../../lib/motionPreference'
 
 gsap.registerPlugin(SplitText)
 
+const BG_IMAGES = [
+  'projects/jeonju-exhibition-convention-center/cover.jpg',
+  'projects/jeonju-kkotsim-hotel/cover.jpg',
+  'projects/jeonju-museum-of-art/cover.jpg',
+  'projects/wanju-sambong-library/cover.jpg',
+  'projects/naju-udelight-cafe/cover.jpg',
+].map((path) => `${import.meta.env.BASE_URL}${path}`)
+
+const ROTATE_INTERVAL_MS = 6000
+
 export function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null)
-  const bgRef = useRef<HTMLImageElement>(null)
+  const bgLayerRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
     const headline = headlineRef.current
@@ -15,7 +26,7 @@ export function Hero() {
 
     let split: SplitText | undefined
 
-    gsap.from(bgRef.current, {
+    gsap.from(bgLayerRef.current, {
       scale: 1.12,
       duration: 1.8,
       ease: 'power2.out',
@@ -35,14 +46,29 @@ export function Hero() {
     return () => split?.revert()
   }, [])
 
+  useEffect(() => {
+    if (prefersReducedMotion()) return
+
+    const id = window.setInterval(() => {
+      setActiveIndex((i) => (i + 1) % BG_IMAGES.length)
+    }, ROTATE_INTERVAL_MS)
+
+    return () => window.clearInterval(id)
+  }, [])
+
   return (
     <section className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 md:px-12">
-      <img
-        ref={bgRef}
-        src={`${import.meta.env.BASE_URL}projects/jeonju-exhibition-convention-center/cover.jpg`}
-        alt=""
-        className="absolute inset-0 -z-20 h-full w-full object-cover"
-      />
+      <div ref={bgLayerRef} className="absolute inset-0 -z-20">
+        {BG_IMAGES.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[1800ms] ease-in-out"
+            style={{ opacity: i === activeIndex ? 1 : 0 }}
+          />
+        ))}
+      </div>
       <div className="absolute inset-0 -z-10 bg-black/70" />
 
       <p className="mb-4 text-sm tracking-widest text-(--color-muted)" data-reveal>
