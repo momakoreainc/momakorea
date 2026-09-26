@@ -6,9 +6,9 @@ import { LabotoryApp } from './labotory/LabotoryApp.tsx'
 import { AdminApp } from './admin/AdminApp.tsx'
 
 const { pathname } = window.location
-const isLabotory = pathname.startsWith('/new2')
 const isAdmin = pathname.startsWith('/admin')
+const isDarkSite = pathname.startsWith('/new')
 
-const page = isAdmin ? <AdminApp /> : isLabotory ? <LabotoryApp /> : <App />
+const page = isAdmin ? <AdminApp /> : isDarkSite ? <App /> : <LabotoryApp />
 
 createRoot(document.getElementById('root')!).render(<StrictMode>{page}</StrictMode>)

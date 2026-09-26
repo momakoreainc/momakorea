@@ -23,7 +23,7 @@ export function LabotoryApp() {
   }, [])
 
   return (
-    <BrowserRouter basename="/new2">
+    <BrowserRouter>
       <LabotoryLayout>
         <ScrollReset />
         <Routes>
