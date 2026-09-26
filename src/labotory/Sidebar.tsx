@@ -1,5 +1,5 @@
 import { Link, useSearchParams } from 'react-router-dom'
-import { CATEGORIES } from './categories'
+import { CATEGORIES } from '../lib/categories'
 
 type SidebarProps = {
   mobileOpen: boolean

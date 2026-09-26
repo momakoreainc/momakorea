@@ -1,9 +1,15 @@
 import { Link, useParams } from 'react-router-dom'
-import { projects } from '../data/projects'
+import type { Project } from '../types'
+import { useProjects } from '../lib/useProjects'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
-export function ProjectDetail() {
-  const { slug } = useParams()
+function ProjectDetailContent({
+  projects,
+  slug,
+}: {
+  projects: Project[]
+  slug: string | undefined
+}) {
   const index = projects.findIndex((p) => p.id === slug)
   const project = projects[index]
   const ref = useScrollReveal<HTMLDivElement>({ start: 'top 95%' })
@@ -84,4 +90,13 @@ export function ProjectDetail() {
       </nav>
     </article>
   )
+}
+
+export function ProjectDetail() {
+  const { slug } = useParams()
+  const { projects } = useProjects()
+
+  if (!projects) return null
+
+  return <ProjectDetailContent projects={projects} slug={slug} />
 }
