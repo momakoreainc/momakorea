@@ -20,7 +20,7 @@ export function Sidebar({ mobileOpen, onClose }: SidebarProps) {
         />
       )}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-80 max-w-[85%] flex-col overflow-y-auto border-r border-neutral-200 bg-white px-8 py-10 transition-transform duration-300 lg:w-[56%] lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-80 max-w-[85%] flex-col overflow-y-auto bg-white px-8 py-10 transition-transform duration-300 lg:w-[56%] lg:translate-x-0 ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
