@@ -57,7 +57,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 md:px-12">
+    <section className="relative isolate flex min-h-screen flex-col justify-center overflow-hidden px-6 md:px-12">
       <div ref={bgLayerRef} className="absolute inset-0 -z-20">
         {BG_IMAGES.map((src, i) => (
           <img
