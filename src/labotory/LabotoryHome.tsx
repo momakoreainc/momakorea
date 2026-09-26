@@ -24,7 +24,7 @@ export function LabotoryHome() {
 
   return (
     <div>
-      <section className="relative flex min-h-screen flex-col justify-end overflow-hidden px-6 pb-16 md:px-16 md:pb-20">
+      <section className="relative flex h-[60vh] max-h-[600px] min-h-[420px] flex-col justify-end overflow-hidden px-6 pb-16 md:px-16 md:pb-20">
         <img
           ref={heroImgRef}
           src={HERO_IMAGE}
