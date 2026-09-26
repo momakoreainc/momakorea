@@ -1,5 +1,5 @@
 import { put, list } from '@vercel/blob'
-import type { Project } from '../../src/types'
+import type { Project } from '../../src/types/index.js'
 
 const PROJECTS_PATHNAME = 'data/projects.json'
 

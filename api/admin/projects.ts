@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { isAuthorized } from '../_lib/auth'
-import { readProjects, writeProjects } from '../_lib/store'
+import { isAuthorized } from '../_lib/auth.js'
+import { readProjects, writeProjects } from '../_lib/store.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!isAuthorized(req)) {
