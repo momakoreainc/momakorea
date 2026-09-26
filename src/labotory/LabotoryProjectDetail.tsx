@@ -23,7 +23,7 @@ export function LabotoryProjectDetail() {
   const next = projects[(index + 1) % projects.length]
 
   return (
-    <article ref={ref} className="px-6 py-16 md:px-16 md:py-24">
+    <article ref={ref} className="px-6 pt-8 pb-16 md:px-16 md:pt-12 md:pb-24">
       <Link
         to="/"
         className="mb-10 inline-block text-sm text-neutral-500 hover:text-neutral-900"
