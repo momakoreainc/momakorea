@@ -25,7 +25,12 @@ export function Sidebar({ mobileOpen, onClose }: SidebarProps) {
         }`}
       >
         <div className="flex w-full max-w-sm flex-1 flex-col">
-          <Link to="/" onClick={onClose} className="text-lg font-semibold tracking-tight text-neutral-900">
+          <Link
+            to="/"
+            onClick={onClose}
+            className="flex items-center gap-2 text-lg font-semibold tracking-tight text-neutral-900"
+          >
+            <img src={`${import.meta.env.BASE_URL}favicon.png`} alt="" className="h-6 w-6" />
             MoMaKorea
           </Link>
           <p className="mt-2 text-sm text-neutral-500">Interior Design Studio, Jeonju</p>

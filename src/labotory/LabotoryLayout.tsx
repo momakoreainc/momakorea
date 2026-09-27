@@ -12,7 +12,8 @@ export function LabotoryLayout({ children }: LabotoryLayoutProps) {
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between border-b border-neutral-200 bg-white px-6 py-4 lg:hidden">
-        <Link to="/" className="text-base font-semibold tracking-tight">
+        <Link to="/" className="flex items-center gap-2 text-base font-semibold tracking-tight">
+          <img src={`${import.meta.env.BASE_URL}favicon.png`} alt="" className="h-5 w-5" />
           MoMaKorea
         </Link>
         <button

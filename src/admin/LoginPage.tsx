@@ -25,7 +25,10 @@ export function LoginPage({ onLogin }: LoginPageProps) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-neutral-50 px-6 text-neutral-900">
       <form onSubmit={handleSubmit} className="w-full max-w-sm rounded-lg bg-white p-8 shadow-sm">
-        <h1 className="text-lg font-semibold text-neutral-900">MoMaKorea Admin</h1>
+        <h1 className="flex items-center gap-2 text-lg font-semibold text-neutral-900">
+          <img src={`${import.meta.env.BASE_URL}favicon.png`} alt="" className="h-5 w-5" />
+          MoMaKorea Admin
+        </h1>
         <p className="mt-1 text-sm text-neutral-500">비밀번호를 입력해 주세요.</p>
         <input
           type="password"
